@@ -154,15 +154,47 @@ public class StudentTest {
         boolean result = instance.equals(sub);
         assertEquals(expResult, result);
     }
+    @Test
+    public void testgetName(){
+        System.out.println("testcons");
+        Student instance = new Student("Sahil","c0657966","M",10.00);
+        String expResult = "Sahil";
+        String result = instance.getName();
+        assertEquals(expResult, result);
+}
+     @Test
+    public void testgetId(){
+        System.out.println("testgetId");
+        Student instance = new Student("Sahil","c0657966","M",10.00);
+        String expResult = "c0657966";
+        String result = instance.getId();
+        assertEquals(expResult, result);
+}   
     
+         @Test
+    public void testgetGender(){
+        System.out.println("testgetGender");
+        Student instance = new Student("Sahil","c0657966","M",10.00);
+        String expResult = "M";
+        String result = instance.getGender();
+        assertEquals(expResult, result);
+}   
     
+         @Test
+    public void testgetGrade(){
+        System.out.println("testgetGrade");
+        Student instance = new Student("Sahil","c0657966","M",10.00);
+        Double expResult = 10.00;
+        Double result = instance.getGrade();
+        assertEquals(expResult, result);
+}
     
     @Test
     public void StudentObjectWithTheSameNameAndId() {
         System.out.println("StudentObjectWithTheSameNameAndId");
         Student stu = null;
-        Student instance = new Student("Toshif","c0657050","IPRC",10.0);
-        Student instance2 = new Student("Toshif","c0657050","IPRC",10.0);
+        Student instance = new Student("Toshif","c0657050","M",10.0);
+        Student instance2 = new Student("Toshif","c0657050","M",10.0);
         boolean expResult = true;
         boolean result = instance.equals(instance2);
         assertEquals(expResult, result);
