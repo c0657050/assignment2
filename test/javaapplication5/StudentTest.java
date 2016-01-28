@@ -154,6 +154,9 @@ public class StudentTest {
         boolean result = instance.equals(sub);
         assertEquals(expResult, result);
     }
+    
+    
+    
     @Test
     public void StudentObjectWithTheSameNameAndId() {
         System.out.println("StudentObjectWithTheSameNameAndId");
