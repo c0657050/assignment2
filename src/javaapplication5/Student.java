@@ -16,8 +16,9 @@ public class Student {
     String gender;
     Double grade;
 
-    public Student(){
+    public Student() {
     }
+
     public String getName() {
         return name;
     }
@@ -60,7 +61,7 @@ public class Student {
     @Override
     public String toString() {
 
-        return "{\"name\":\"" + getName()+ "\",\"id\":\""+getId()+ "\",\"gender\":\""+ getGender()+"\",\"grade\":"+getGrade() + "}";
+        return "{\"name\":\"" + getName() + "\",\"id\":\"" + getId() + "\",\"gender\":\"" + getGender() + "\",\"grade\":" + getGrade() + "}";
     }
 
     public boolean equals(Student stu) {
