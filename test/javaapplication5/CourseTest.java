@@ -5,6 +5,7 @@
  */
 package javaapplication5;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -49,8 +50,7 @@ public class CourseTest {
         Student student = null;
         Course instance = new Course();
         instance.add(student);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       
     }
 
     /**
@@ -62,8 +62,7 @@ public class CourseTest {
         Student student = null;
         Course instance = new Course();
         instance.remove(student);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       
     }
 
     /**
@@ -75,22 +74,13 @@ public class CourseTest {
         String id = "";
         Course instance = new Course();
         instance.remove(id);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
      * Test of remove method, of class Course.
      */
-    @Test
-    public void testRemove_int() {
-        System.out.println("remove");
-        int position = 0;
-        Course instance = new Course();
-        instance.remove(position);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+ 
 
     /**
      * Test of insert method, of class Course.
@@ -98,29 +88,20 @@ public class CourseTest {
     @Test
     public void testInsert() {
         System.out.println("insert");
-        Student student = null;
-        int position = 0;
-        Course instance = new Course();
-        instance.insert(student, position);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        List<Student> students = new ArrayList<Student>();
+        students.add(new Student("sahil","c0657966","Male",80.3));
+        Course instance = new Course (students);
+        Student stu = new Student("Toshif","c0657050","Male",60.4);
+        instance.insert(stu, 1);
+        String expResult = "[" + instance.get(0).toString()+ ", " + instance.get(1).toString() + "]";
+        String result = instance.getAll().toString();
+        assertEquals(expResult, result);
     }
 
     /**
      * Test of get method, of class Course.
      */
-    @Test
-    public void testGet_String() {
-        System.out.println("get");
-        String id = "";
-        Course instance = new Course();
-        Student expResult = null;
-        Student result = instance.get(id);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
+   
     /**
      * Test of get method, of class Course.
      */
@@ -128,12 +109,13 @@ public class CourseTest {
     public void testGet_int() {
         System.out.println("get");
         int position = 0;
-        Course instance = new Course();
-        Student expResult = null;
-        Student result = instance.get(position);
+        List<Student> students = new ArrayList<Student>();
+        students.add(new Student("sahil","c0657966","Male",80.3));
+        Course instance = new Course(students);
+        String expResult = "{\"name\":\"sahil\",\"id\":\"c0657966\",\"gender\":\"Male\",\"grade\":80.3}";
+        String result = instance.get(position).toString();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       
     }
 
     /**
@@ -146,37 +128,185 @@ public class CourseTest {
         List<Student> expResult = null;
         List<Student> result = instance.getAll();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       
     }
+    @Test
+     public void testGetAllShouldReturnList() {
+        System.out.println("testGetAllShouldReturnList");
+        List<Student> students = new ArrayList<Student>();
+        students.add(new Student("sahil","c0657966","Male",80.3));
+        Course instance = new Course(students);
+        String expResult = "[" + students.get(0).toString() + "]";
+        String result = instance.getAll().toString();
+        assertEquals(expResult, result);
+       
+    }
+    
+     @Test
+     public void testGetAllWithZeroArgConstructWithAddingValueShouldReturnList() {
+        System.out.println("testGetAllWithZeroArgConstructWithAddingValueShouldReturnList");
+        List<Student> students = new ArrayList<Student>();
+        students.add(new Student("sahil","c0657966","Male",80.3));
+        Course instance = new Course(students);
+        String expResult = "[" + students.get(0).toString() + "]";
+        String result = instance.getAll().toString();
+        assertEquals(expResult, result);
+       
+    }
+     
+       @Test
+     public void testGetAllWithRemoveShouldReturnList() {
+        System.out.println("testGetAllWithRemoveShouldReturnList");
+        Course instance = new Course();
+        Student students = new Student("sahil","c0657966","Male",80.3);
+        Student stu = new Student("Toshif","c0657050","Male",60.4);
+        instance.add(students);
+        instance.add(stu);
+        instance.remove(1);
+        String expResult = "[" + instance.get(0).toString() + "]";
+        String result = instance.getAll().toString();
+        assertEquals(expResult, result);
+       
+    }
+       @Test
+     public void testGetAllWithStringIdShouldReturnList() {
+        System.out.println("testGetAllWithStringIdShouldReturnList");
+        Course instance = new Course();
+        Student students = new Student("sahil","c0657966","Male",80.3);
+        Student stu = new Student("Toshif","c0657050","Male",60.4);
+        instance.add(students);
+        instance.add(stu);
+        instance.remove("c0657966");
+        String expResult = "[" + instance.get(0).toString() + "]";
+        String result = instance.getAll().toString();
+        assertEquals(expResult, result);
+       
+    }
+     
+      @Test
+     public void testGetAllWithStudentShouldReturnList() {
+        System.out.println("testGetAllWithStudentShouldReturnList");
+        Course instance = new Course();
+        Student students = new Student("sahil","c0657966","Male",80.3);
+        Student stu = new Student("Toshif","c0657050","Male",60.4);
+        instance.add(students);
+        instance.add(stu);
+        instance.remove(stu);
+        String expResult = "[" + instance.get(0).toString() + "]";
+        String result = instance.getAll().toString();
+        assertEquals(expResult, result);
+       
+    }
+     
+    
+     @Test
+    public void testGetShouldReturnNullPointer() {
+        try{
+        System.out.println("testGetShouldReturnNullPointer");
+        List<Student> students = new ArrayList<Student>();
+        students.add(new Student("sahil","c0657966","Male",80.3));
+        Course instance = new Course(students);
+        String expResult = null;
+        String result = instance.get("c065796").toString();
+        assertEquals(expResult, result);
+       
+    }
+        catch(NullPointerException e){
+   
+        }
+    }
+    @Test
+     public void testGetWithInvalidStudentShoulReturnNullPointer() {
+        try{
+        System.out.println("testGetWithInvalidStudentShoulReturnNullPointer");
+        int position = -1;
+        List<Student> students = new ArrayList<Student>();
+        students.add(new Student("sahil","c0657966","Male",80.3));
+        Course instance = new Course(students);
+        String expResult = null;
+        String result = instance.get(position).toString();
+        assertEquals(expResult, result);
+       
+    }
+        catch(NullPointerException e){
+   
+        }
+    }
+    
+     
+      @Test
+       public void testGetWithPositionGreaterOrEqualToSizeShoulReturnNullPointer() {
+        try{
+        System.out.println("testGetWithPositionGreaterOrEqualToSizeShoulReturnNullPointer");
+        int position = 1;
+        List<Student> students = new ArrayList<Student>();
+        students.add(new Student("sahil","c0657966","Male",80.3));
+        Course instance = new Course(students);
+        String expResult = null;
+        String result = instance.get(position).toString();
+        assertEquals(expResult, result);
+       
+    }
+        catch(NullPointerException e){
+   
+        }
+    }
+    
 
     /**
      * Test of equals method, of class Course.
      */
+  
+    
     @Test
-    public void testEquals() {
-        System.out.println("equals");
+    public void testEqualsWithNonCourseObjectShouldReturnFalse() {
+        System.out.println("testEqualsWithNonCourseObjectShouldReturnFalse");
         Object obj = null;
         Course instance = new Course();
         boolean expResult = false;
         boolean result = instance.equals(obj);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       
     }
 
+     @Test
+    public void testEqualsWithCourseObjectShouldReturnTrue() {
+        System.out.println("testEqualsWithCourseObjectShouldReturnTrue");
+        Object obj = new Course();
+        Course instance = new Course();
+        boolean expResult = true;
+        boolean result = instance.equals(obj);
+        assertEquals(expResult, result);
+       
+    }
+      @Test
+    public void testEqualsWithCourseObjectWithDifferentListShouldReturnTrue() {
+        System.out.println("testEqualsWithCourseObjectWithDifferentListShouldReturnTrue");
+        List<Student> students = new ArrayList<Student>();
+        students.add(new Student("sahil","c0657966","Male",80.3));
+        Course c = new Course(students);
+        Course instance = new Course();
+        boolean expResult = false;
+        boolean result = instance.equals(c);
+        assertEquals(expResult, result);
+       
+    }
+    
     /**
      * Test of toString method, of class Course.
      */
     @Test
     public void testToString() {
         System.out.println("toString");
-        Course instance = new Course();
-        String expResult = "";
-        String result = instance.toString();
+        List<Student> students = new ArrayList<Student>();
+        students.add(new Student("sahil","c0657966","Male",80.3));
+        Course instance = new Course(students);
+        Student stu =new Student("toshif","c0657050","Male",60.3);
+        instance.insert(stu, 1);
+        String expResult =  "[" + instance.get(0).toString() + ", " + instance.get(1).toString() + "]";
+        String result = instance.getAll().toString();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -185,13 +315,16 @@ public class CourseTest {
     @Test
     public void testGetAllByGender() {
         System.out.println("getAllByGender");
-        String gender = "";
-        Course instance = new Course();
-        Set<Student> expResult = null;
-        Set<Student> result = instance.getAllByGender(gender);
+        String gender = "Male";
+        List<Student> students = new ArrayList<Student>();
+        students.add(new Student("sahil","c0657966","Male",80.3));
+        Course instance = new Course(students);
+        Student stu =new Student("Simar","c0657050","Female",60.3);
+        instance.insert(stu,1);
+        String expResult = "[{\"name\":\"sahil\",\"id\":\"c0657966\",\"gender\":\"Male\",\"grade\":80.3}]";
+        String result = instance.getAllByGender(gender).toString();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       
     }
 
     /**
@@ -204,8 +337,7 @@ public class CourseTest {
         Map<String, Set<Student>> expResult = null;
         Map<String, Set<Student>> result = instance.getGradeMap();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
     
 }
