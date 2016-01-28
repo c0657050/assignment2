@@ -16,8 +16,17 @@ public class Student {
     String gender;
     Double grade;
 
+    public Student(){
+    }
     public String getName() {
         return name;
+    }
+
+    public Student(String name, String id, String gender, Double grade) {
+        this.name = name;
+        this.id = id;
+        this.gender = gender;
+        this.grade = grade;
     }
 
     public void setName(String name) {
